@@ -1,14 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Loan Calculator</title>
     <link rel="stylesheet" href="./css/main.css">
 </head>
+
 <body>
-    <h1>Calculate your loan</h1>
+    <main class="flex">
+        <div id="main-container" class="flex">
+            <h1>Calculate your loan</h1>
+            <div id="user-input-container">
+                <label for="amount">Amount:</label>
+                <input type="text" id="amount">
+                <label for="interestRate">Interest Rate:</label>
+                <input type="text" id="interestRate">
+                <label for="repaymentPeriod">Repayment Period:</label>
+                <input type="text" id="repaymentPeriod">
+            </div>
+            <div id="display-data-container">
+
+            </div>
+        </div>
+    </main>
     <!-- script -->
     <script src="./js/main.js"></script>
 </body>
+
 </html>

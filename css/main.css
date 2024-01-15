@@ -10,11 +10,41 @@
 }
 
 body {
-    min-height: 90vh;
+    height: 100%;
     color: var(--text--color);
     background-color: var(--main--bg--color);
 }
 
+/* global classes */
+
 .display-none {
     display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+/* main-style */
+
+main {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#main-container {
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    padding: 1rem;
+    gap: 1rem;
+    border: 2px solid white;
+}
+
+@media (max-width: 800px) {
+    #user-input-container {
+        display: flex;
+        flex-direction: column;
+    }
 }
