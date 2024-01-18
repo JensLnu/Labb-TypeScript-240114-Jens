@@ -1,7 +1,5 @@
 "use strict";
-const amountInput = document.getElementById('amount');
-const interestRateInput = document.getElementById('interestRate');
-const repaymentPeriod = document.getElementById('repaymentPeriod');
+// global references
 const messageElem = document.getElementById('message');
 const inputs = document.querySelectorAll('.inputs');
 init();
@@ -60,12 +58,40 @@ function checkAllUsersInput() {
     else
         messageElem.textContent = 'You have to put in only numbers in each feild!';
 }
-// 
+// get user input and calculate monthly cost
 function calculateLoan() {
-    console.log('calculateLoan');
-    let p = Number(interestRateInput.value);
-    let r = Number(amountInput.value) / 12;
+    const amountInput = document.getElementById('amount');
+    const interestRateInput = document.getElementById('interestRate');
+    const repaymentPeriod = document.getElementById('repaymentPeriod');
+    let p = Number(amountInput.value);
+    let r = Number(interestRateInput.value) / 12 / 100;
     let n = Number(repaymentPeriod.value) * 12;
-    let monthlyCost = p * (r * (1 + r) ^ n) / (1 + r) ^ n - 1;
-    console.log(monthlyCost);
+    let monthlyCost = p * (r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+    printLoanDetail(monthlyCost, p, r);
+}
+// print & calculate loan detail
+function printLoanDetail(monthlyCost, totalAmount, rate) {
+    // references
+    const loanDataContainer = document.getElementById('display-data-container');
+    const printPlaces = document.querySelectorAll('.loan-data p');
+    const month = printPlaces[0];
+    const paymentPerMonth = printPlaces[1];
+    const interestCost = printPlaces[2];
+    const amountLeft = printPlaces[3];
+    // resets feild
+    month.textContent = 'Month';
+    paymentPerMonth.textContent = 'Payment';
+    interestCost.textContent = 'Interest cost';
+    amountLeft.textContent = 'Amount left';
+    loanDataContainer.classList.remove('display-none');
+    let numberOfMonth = 1;
+    let loanAmount = totalAmount;
+    while (loanAmount > 1) {
+        month.innerHTML += `<br>${numberOfMonth}.`;
+        numberOfMonth++;
+        paymentPerMonth.innerHTML += `<br>${monthlyCost.toFixed(2)}`;
+        interestCost.innerHTML += `<br>${(loanAmount * rate).toFixed(2)}`;
+        loanAmount += (loanAmount * rate) - monthlyCost;
+        amountLeft.innerHTML += `<br>${loanAmount.toFixed(2)}`;
+    }
 }

@@ -12,18 +12,25 @@
     <main class="flex">
         <div id="main-container" class="flex">
             <h1>Calculate your loan</h1>
-            <div id="user-input-container">
+            <form id="user-input-container">
                 <label for="amount">Amount:</label>
                 <input type="text" id="amount" class="inputs amount" placeholder="1-100 000 000">
                 <label for="interestRate">Interest Rate:</label>
                 <input type="text" id="interestRate" class="inputs interestRate" placeholder="0-100">
                 <label for="repaymentPeriod">Repayment Period:</label>
                 <input type="text" id="repaymentPeriod" class="inputs repaymentPeriod" placeholder="1-100 years.." min="1" max="100">
-            </div>
+            </form>
             <p id="message"></p>
-            <button id="submit-btn">Calculate</button>
-            <div id="display-data-container">
+            <button id="submit-btn">Show Payment Plan</button>
 
+            <div id="display-data-container" class="display-none">
+                <h2>Loan detail & monthly payment</h2><hr>
+                <div class="flex loan-data">
+                    <p>Month</p>
+                    <p>Payment</p>
+                    <p>Interest cost</p>
+                    <p>Amount left</p>
+                </div>
             </div>
         </div>
     </main>

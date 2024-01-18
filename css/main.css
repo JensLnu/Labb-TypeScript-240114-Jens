@@ -10,7 +10,6 @@
 }
 
 body {
-    height: 100%;
     color: var(--text--color);
     background-color: var(--main--bg--color);
 }
@@ -36,9 +35,9 @@ body {
 /* main-style */
 
 main {
+    margin: 4rem;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 #main-container {
@@ -48,6 +47,18 @@ main {
     padding: 1rem;
     gap: 1rem;
     border: 2px solid white;
+}
+
+#submit-btn {
+    padding: 2px 10px;
+}
+
+#submit-btn:hover {
+    cursor: pointer;
+}
+
+.loan-data {
+    gap: 1rem;
 }
 
 @keyframes shake {
@@ -73,5 +84,9 @@ main {
     #user-input-container {
         display: flex;
         flex-direction: column;
+    }
+
+    main {
+        margin: 0;
     }
 }
