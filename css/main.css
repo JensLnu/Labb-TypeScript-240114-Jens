@@ -25,6 +25,14 @@ body {
     display: flex;
 }
 
+.invalid-input {
+    background-color: #e63946;
+}
+
+.invalid-input-animation {
+    animation: shake 0.5s;
+}
+
 /* main-style */
 
 main {
@@ -40,6 +48,25 @@ main {
     padding: 1rem;
     gap: 1rem;
     border: 2px solid white;
+}
+
+@keyframes shake {
+    0%, 100% {
+        transform: translate(0, 0);
+      }
+      12.5%, 87.5% {
+        transform: translateY(-2px);
+      }
+      25%,
+      75% {
+        transform: translateX(-2px);
+      }
+      37.5%, 62.5% {
+        transform: translateY(2px);
+      }
+      50% {
+        transform: translateX(2px);
+      }
 }
 
 @media (max-width: 800px) {
