@@ -2,7 +2,7 @@
 const messageElem = document.getElementById('message') as HTMLParagraphElement;
 const inputs = document.querySelectorAll('.inputs') as NodeListOf<HTMLInputElement>;
 
-init();
+document.addEventListener('DOMContentLoaded', init);
 // initiates base functionallity
 function init(): void {
     inputs.forEach(input => {
@@ -15,9 +15,9 @@ function init(): void {
 }
 
 // checks so user only puts in right numbers in each inputfeild
-function validateUserInput(e: any, value: string): void {
+function validateUserInput(e: Event, value: string): void {
     const onlyNum: RegExp = /^\d+$/;
-    const input: any = e.target;
+    const input: HTMLInputElement = e.target as HTMLInputElement;
     const numberValue: number = Number(value);
     if (input.classList.contains('amount') && (!onlyNum.test(value) || numberValue < 1 || numberValue > 100000000)) {
         wrongInput(input);
@@ -29,14 +29,14 @@ function validateUserInput(e: any, value: string): void {
         wrongInput(input);
         messageElem.textContent = 'You are only allowed to take a loan with repayment period from 1 to 100 year!';
     }
-    else {
+    else { // rests feild
         input.classList.remove('invalid-input');
         messageElem.textContent = '';
     }
 }
 
 // shakes and makes inputfield red
-function wrongInput(input: any): void {
+function wrongInput(input: HTMLInputElement): void {
     input.classList.add('invalid-input', 'invalid-input-animation');
     setTimeout(() => {
         input.classList.remove('invalid-input-animation');

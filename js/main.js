@@ -2,7 +2,7 @@
 // global references
 const messageElem = document.getElementById('message');
 const inputs = document.querySelectorAll('.inputs');
-init();
+document.addEventListener('DOMContentLoaded', init);
 // initiates base functionallity
 function init() {
     inputs.forEach(input => {
@@ -30,7 +30,7 @@ function validateUserInput(e, value) {
         wrongInput(input);
         messageElem.textContent = 'You are only allowed to take a loan with repayment period from 1 to 100 year!';
     }
-    else {
+    else { // rests feild
         input.classList.remove('invalid-input');
         messageElem.textContent = '';
     }
