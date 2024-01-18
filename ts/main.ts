@@ -1,4 +1,3 @@
-
 // global references
 const messageElem = document.getElementById('message') as HTMLParagraphElement;
 const inputs = document.querySelectorAll('.inputs') as NodeListOf<HTMLInputElement>;
